@@ -1,6 +1,7 @@
 package com.internship.tool.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,15 +12,24 @@ public class AuditFinding {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title cannot be empty")
     private String title;
 
+    @NotBlank(message = "Status cannot be empty")
     private String status;
 
+    @NotBlank(message = "Severity cannot be empty")
     private String severity;
 
     private LocalDateTime createdAt;
 
-    // getters and setters
+    // Auto-set created time
+    @PrePersist
+    public void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
