@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "audit_findings")
 @Getter
@@ -32,4 +34,7 @@ public class AuditFinding {
 
     @Column(nullable = false)
     private String status;
+
+    @Column(name = "due_date")
+    private LocalDate dueDate;
 }

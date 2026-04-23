@@ -1,0 +1,2 @@
+ALTER TABLE audit_findings ADD COLUMN IF NOT EXISTS due_date DATE;
+ALTER TABLE audit_finding ADD COLUMN IF NOT EXISTS due_date DATE;

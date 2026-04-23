@@ -39,6 +39,7 @@ public class AuditFindingServiceImpl implements AuditFindingService {
         existing.setDescription(updatedFinding.getDescription());
         existing.setSeverity(updatedFinding.getSeverity());
         existing.setStatus(updatedFinding.getStatus());
+        existing.setDueDate(updatedFinding.getDueDate());
 
         return repository.save(existing);
     }
