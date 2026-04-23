@@ -1,13 +1,14 @@
 package com.internship.tool.service;
 
 import com.internship.tool.entity.AuditFinding;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface AuditFindingService {
     AuditFinding createFinding(AuditFinding finding);
 
-    List<AuditFinding> getAllFindings();
+    Page<AuditFinding> getAllFindings(int page, int size, String sortBy, String sortDir);
+
+    String exportFindingsAsCsv(String sortBy, String sortDir);
 
     AuditFinding getFindingById(Long id);
 

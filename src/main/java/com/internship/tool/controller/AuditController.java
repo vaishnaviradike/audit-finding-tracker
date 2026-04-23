@@ -2,10 +2,10 @@ package com.internship.tool.controller;
 ///Temp code only 
 import com.internship.tool.service.AuditService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,9 +35,14 @@ public class AuditController {
 
     // SEARCH API
     @GetMapping("/search")
-    public ResponseEntity<List<?>> searchAudit(@RequestParam String q) {
+    public ResponseEntity<Page<Object>> searchAudit(
+            @RequestParam String q,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir) {
 
-        List<?> results = auditService.searchAudit(q);
+        Page<Object> results = auditService.searchAudit(q, page, size, sortBy, sortDir);
         return ResponseEntity.ok(results);
     }
 
