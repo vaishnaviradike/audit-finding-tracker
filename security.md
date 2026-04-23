@@ -4,7 +4,7 @@
 **Status:** Initial Draft 
 
 ---
-#### DAY 1 
+# DAY 1 
 
 ## Project Security Overview
 As we initiate the development of the Tool-23 Audit Finding Tracker, we must consider the security implications of the web application built in the capstone project. 
@@ -67,7 +67,7 @@ Sensitive data like passwords stored without hashing.
 ---
 ---
 
-#### DAY 2
+# DAY 2
 
 ## 2. Tool-Specific Security Threats to this project
 
