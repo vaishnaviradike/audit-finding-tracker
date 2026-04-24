@@ -1,26 +1,20 @@
 from flask import Flask
 from services.sanitizer import sanitize_request
+from config import limiter
 from routes.describe import describe_bp
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from routes.report import report_bp
 
 app = Flask(__name__)
 
-# Rate limiting configuration
-limiter = Limiter(
-    key_func=get_remote_address,   # identify users by IP
-    default_limits=["30 per minute"]  # global limit
-)
+# Initialize rate limiter with the app
 limiter.init_app(app)
 
+# Register blueprints
 app.register_blueprint(report_bp)
+app.register_blueprint(describe_bp)
 
 # Register middleware
 app.before_request(sanitize_request)
-
-#register routes
-app.register_blueprint(describe_bp)
 
 #error handling codee for bad requests and server errors
 @app.errorhandler(400)

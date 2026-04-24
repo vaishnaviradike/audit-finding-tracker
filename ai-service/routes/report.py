@@ -1,11 +1,7 @@
 from flask import Blueprint, g, jsonify
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
+from config import limiter
 
 report_bp = Blueprint("report", __name__)
-
-# Apply stricter limit here
-from app import limiter
 
 @report_bp.route("/generate-report", methods=["POST"])
 @limiter.limit("10 per minute")

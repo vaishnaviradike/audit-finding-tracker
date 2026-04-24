@@ -12,6 +12,3 @@ def describe():
         "message": "Processed successfully",
         "clean_text": text
     })
-from flask import Blueprint, g, jsonify
-
-describe_bp = Blueprint("describe", __name__)
